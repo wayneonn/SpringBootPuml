@@ -8,15 +8,16 @@ package "Spring Boot Application" <<SPRING>> {
   [Database]
   [UI]
 
-  [Controller] --> [Service]
-  [Service] --> [Repository]
-  [Repository] --> [Database]
-  [Controller] --> [UI]
-}
+  [Controller] --> [Service] : Sends HTTP Request
+  [Service] --> [Repository] : Manages Data Access
+  [Repository] --> [Database] : Stores Data
+  [Controller] --> [UI] : Renders UI
 
-[Controller] --> [Service] : HTTP Request
-[Service] --> [Repository] : Data Access
-[Repository] --> [Database] : Data Storage
-[Controller] --> [UI] : UI Rendering
+  [UI] --> [Controller] : Receives User Input
+  [Controller] --> [Service] : Processes Input
+  [Service] --> [Repository] : Retrieves Data
+  [Repository] --> [Database] : Fetches Data
+  [Service] --> [UI] : Provides Data for Rendering
+}
 
 @enduml
