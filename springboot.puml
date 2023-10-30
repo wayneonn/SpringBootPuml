@@ -1,0 +1,22 @@
+@startuml
+!define SPRING
+
+package "Spring Boot Application" <<SPRING>> {
+  [Controller]
+  [Service]
+  [Repository]
+  [Database]
+  [UI]
+
+  [Controller] --> [Service]
+  [Service] --> [Repository]
+  [Repository] --> [Database]
+  [Controller] --> [UI]
+}
+
+[Controller] --> [Service] : HTTP Request
+[Service] --> [Repository] : Data Access
+[Repository] --> [Database] : Data Storage
+[Controller] --> [UI] : UI Rendering
+
+@enduml
